@@ -1,0 +1,44 @@
+# http request templates #######################################################
+#GET:
+curl -X GET http://127.0.0.1:8065/api/v1/
+
+#PUT:
+curl -X PUT -H 'Content-type: application/json' -d '{"key":"value"}' http://127.0.0.1:8065/api/v1/
+
+#POST:
+curl -X POST -H 'Content-type: application/json' -d '{"key":"value"}' http://127.0.0.1:8065/api/v1/
+
+#DELETE:
+curl -X DELETE http://127.0.0.1:8065/api/v1/
+
+
+# clear that nagging error #####################################################
+free port 8065:
+fuser -n tcp -k 8065
+
+
+# http request examples ########################################################
+
+# FILE:
+# Insert File Epoch as MP3 (unix path):
+curl -X POST -H 'Content-type: application/json' -d @curl_files/POST_Epoch.json http://127.0.0.1:8065/api/v1/file/
+
+# Insert File Funky Monks as WAV (windows path):
+curl -X POST -H 'Content-type: application/json' -d @curl_files/POST_Funky_Monks.json http://127.0.0.1:8065/api/v1/file/
+
+# Update File Black Mambo as MP3 (unix path):
+curl -X PUT -H 'Content-type: application/json' -d @curl_files/PUT_Black_Mambo.json http://127.0.0.1:8065/api/v1/file/
+
+# Delete File Funky Monks: 0x9d28298230c0f2c9b4f4a9925ee6cc1d:
+curl -X DELETE http://127.0.0.1:8065/api/v1/file/0x9d28298230c0f2c9b4f4a9925ee6cc1d
+
+
+# CD:
+# Update CD Amputechture:
+curl -X PUT -H 'Content-type: application/json' -d @curl_files/PUT_Amputechture.json http://127.0.0.1:8065/api/v1/cd/
+
+# Insert CD idiots:
+curl -X POST -H 'Content-type: application/json' -d @curl_files/POST_idiots.json http://127.0.0.1:8065/api/v1/cd/
+
+# Delete CD Choose Your Weapon
+curl -X DELETE http://127.0.0.1:8065/api/v1/cd/1616
