@@ -1,4 +1,4 @@
--- utility file to clear out srichenb_cs355fa22 database
+-- utility file to clear out default SSU data from srichenb_cs355fa22 database
 
 USE srichenb_cs355fa22;
 
