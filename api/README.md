@@ -1,10 +1,10 @@
 # CDDB REST API
 
-This application serves as a developer-friendly interface to users’ personal CD databases by providing a uniform interface to serve data over the network.
+This application serves as a developer-friendly interface to users’ personal CD databases, serving data over the network.
 
-The most important service for the API to provide is a verbose interface for viewing and filtering information from the Available Hifi view in the CD Database. This endpoint is designed to provide a detailed view of every high fidelity audio File or CD that is available at the user’s current location. This view is given its own controller and route path. This provides users with a number of HTTP GET methods for monitoring and clearing errors, as well as searching for music by artist name, CD title, and track title.
+The most important service the API provides is an interface for viewing and filtering information from the Available Hifi view in the CD Database. This endpoint is designed to provide a detailed view of every high-fidelity audio File or CD available at the user’s current location. This view is given its own controller and route path. Its HTTP GET methods let users monitor and clear errors, as well as search for music by artist name, CD title, and track title.
 
-The primary musical entities in the database are CDs and Files. Users need to be able to insert, update, or delete these entities as their collections expand and refine. Both CDs and Files are given their own controllers and route paths. They provide HTTP GET PUT POST and DELETE methods.
+The primary musical entities in the database are CDs and Files. Users need to be able to insert, update, or delete these entities as their collections grow. Both CDs and Files are given their own controllers and route paths. They provide HTTP GET, PUT, POST, and DELETE methods.
 
 ## Path Name: `Default`
 
@@ -36,16 +36,16 @@ updates the Artist and CD_Artist tables when necessary.
 **Description:** This route uses the CD controller to insert a new CD into the database. It updates
 the Artist and CD_Artist tables when necessary by using a new stored procedure called
 Push_CD().
-Note: My intention for this method was to use a “Tracks” array in the JSON file in order to
-perform all of the necessary track inserts in one request. I put a great deal of effort into
+Note: My intention for this method was to use a “Tracks” array in the JSON file to
+perform all necessary track inserts in one request. I put a great deal of effort into
 researching and testing different approaches. I could not figure out a way to do this without
-creating opportunity for SQL injection or switching to a different nodejs package for mySQL.
+creating an opportunity for SQL injection or switching to a different Node.js package for MySQL.
 
 ## Path Name: `deleteCDById`
 
 **Path:** `api/v1/cd/:ID`  
 **Description:** This route uses the CD controller to delete a CD with a matching ID from the
-database.It updates the CD_Artist table by using a new stored procedure called Pop_CD().
+database. It updates the CD_Artist table by using a new stored procedure called Pop_CD().
 
 ## Path Name: `getFiles`
 
@@ -61,16 +61,16 @@ database.It updates the CD_Artist table by using a new stored procedure called P
 
 **Path:** `api/v1/file/`  
 **Description:** This route uses the File controller to update an existing File in the database. Before
-making the query, the controller generates a new MD5 hash, constructs a filepath from the base
-path, and derives whether or not the file is lossy based on its file extension.
+making the query, the controller generates a new MD5 hash, constructs a file path from the base
+path, and determines whether the file is lossy based on its file extension.
 Note: This route is compatible with C:\Windows\style\paths as well as ~/Unix/style/paths.
 
 ## Path Name: `insertFile`
 
 **Path:** `api/v1/file/`  
 **Description:** This route uses the File controller to insert a new File into the database. Before
-making the query, the controller generates a new MD5 hash, constructs a filepath from the base
-path, and derives whether or not the file is lossy based on its file extension.
+making the query, the controller generates a new MD5 hash, constructs a file path from the base
+path, and determines whether the file is lossy based on its file extension.
 Note: This route is compatible with C:\Windows\style\paths as well as ~/Unix/style/paths.
 
 ## Path Name: `deleteFileByMD5`
@@ -102,5 +102,5 @@ prove it).
 
 **Path:** `api/v1/hifi/by_artist` `api/v1/hifi/by_track` `api/v1/hifi/by_cd`  
 **Description:** These routes use the Hifi controller to get available Hifi from the Available_Hifi view
-in the database, and filter the results by CD title, Track title, or the name of any participating
+in the database and filter the results by CD title, Track title, or the name of any participating
 Artist from the CD.
