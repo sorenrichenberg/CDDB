@@ -6,7 +6,7 @@ I built this for CS355 Database Management Systems at Sonoma State University in
 
 ## What it does
 
-- Tracks CDs, artists, tracks, personnel, and ripped files.
+- Tracks CDs, artists, songs, personnel, and ripped files.
 - Finds unripped tracks and locally available high-fidelity audio.
 - Provides API endpoints for managing CDs and files, searching for music, and checking for mislabeled lossless files.
 
